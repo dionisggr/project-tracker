@@ -1,0 +1,9 @@
+{
+  "short_name": "Client Template",
+  "name": "LEDJJ Front-End Template",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
