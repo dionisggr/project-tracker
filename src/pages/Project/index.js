@@ -16,9 +16,9 @@ export default function Project() {
   function addMessage(message) {
     messages.push(message);
 
-    const updateProjectState = { ...project, messages };
+    const newProjectState = { ...project, messages };
 
-    setProject(updateProjectState);
+    setProject(newProjectState);
   };
 
   useEffect(() => {

@@ -17,7 +17,7 @@ export default function MessageInput({ phase }) {
     if (!phase) return;
 
     const id = Date.now().toString();
-    const date = new Date().toString().split(' ').slice(0, 4).join(' ');
+    const date = new Date();
     const message = evt.target.message.value;
     const author = 'admin';
     const messageData = { id, date, message, author, phase };
