@@ -1,0 +1,23 @@
+.project-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.project-info .text-input {
+  width: fit-content;
+}
+
+.project-info .text-input,
+.project-info .label-with-value {
+  margin: 5px 0;
+}
+
+.project-info button {
+  position: absolute;
+  right: 10%;
+  top: 40%;
+}
