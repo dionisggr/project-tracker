@@ -1,14 +1,18 @@
-import 'styles/TextInput.css';
-
 export default function TextInput(props) {
   const defaultName = `text-input-` + Date.now();
   const {
+    name = defaultName,
     className = '',
     label = '',
     placeholder = '',
-    name = defaultName,
     onChange = () => { },
+    defaultValue,
   } = props;
+  let value;
+
+  if (!defaultValue) {
+    value = props.children;
+  }
 
   return (
     <div className={`text-input ${className}`}>
@@ -18,8 +22,9 @@ export default function TextInput(props) {
         type='text'
         name={name}
         placeholder={placeholder}
-        value={props.children}
         onChange={onChange}
+        value={value}
+        defaultValue={props.children}
       ></input>
     </div>
   );

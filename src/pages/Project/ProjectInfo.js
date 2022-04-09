@@ -21,7 +21,14 @@ export default function ProjectInfo({ project = {} }) {
   };
 
   async function editReport(evt) {
-    const fields = ['client', 'project-name', 'date-requested', 'status', 'contact', 'email-or-phone'];
+    const fields = [
+      'client',
+      'project-name',
+      'date-requested',
+      'status',
+      'contact',
+      'email-or-phone'
+    ];
     let { name, value } = evt.target;
 
     if (fields.includes(name)) {

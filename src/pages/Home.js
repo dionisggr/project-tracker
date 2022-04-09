@@ -2,8 +2,17 @@ import TextInput from 'common/TextInput';
 import 'styles/Home.css';
 
 export default function Home() {
+  function getProject(evt) {
+    evt.preventDefault();
+
+    const projectId = evt.target['project-id-input'].value;
+
+    // Awesome code to fetch Project from ID
+    console.log('projectId:', projectId);
+  };
+
   return (
-    <form className='home'>
+    <form className='home' onSubmit={getProject}>
       <h3>Welcome to Tec<sup>3</sup>'s internal project management tool</h3>
 
       <label>Please provide a Project ID</label>

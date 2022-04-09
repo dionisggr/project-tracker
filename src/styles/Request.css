@@ -1,0 +1,12 @@
+.request {
+  border: solid red;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+  padding: 25px;
+}
+
+.request button {
+  width: fit-content;
+}
