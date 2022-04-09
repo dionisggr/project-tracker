@@ -4,6 +4,7 @@
   min-height: 40px;
   text-align: center;
   padding-top: 10px;
+  cursor: pointer;
 }
 
 .phase.open {
@@ -16,6 +17,26 @@
   padding-top: 2px;
 }
 
+.phase.completed.open {
+  padding-top: 10px;
+}
+
 .phase.completed .expand-icon {
   transform: translate(0, -10%);
+}
+
+.phase-name {
+  cursor: pointer;
+}
+
+.phase-details {
+  cursor: auto;
+}
+
+.phase-goal,
+.phase-date-started {
+  display: block;
+  margin: auto;
+  text-align: left;
+  margin: 0 25px;
 }
