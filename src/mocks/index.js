@@ -1,7 +1,7 @@
 const date = new Date();
 
 const project = {
-  id: 1,
+  id: 'demo',
   projectName: 'Project Tracker Website',
   client: 'Tec3',
   contact: 'Dio',

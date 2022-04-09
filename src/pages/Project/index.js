@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { MessageContext } from 'context';
 import ProjectInfo from './ProjectInfo';
 import Phases from './Phases';
@@ -32,6 +32,8 @@ export default function Project() {
 
     getProject();
   }, [projectId]);
+
+  if (!project.id) return <Navigate to='/404' />
 
   return (
     <article className='project'>

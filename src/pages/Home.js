@@ -1,7 +1,7 @@
 import TextInput from 'common/TextInput';
 import 'styles/Home.css';
 
-export default function Home() {
+export default function Home(props) {
   function getProject(evt) {
     evt.preventDefault();
 
@@ -10,6 +10,8 @@ export default function Home() {
     // Awesome code to fetch Project from ID
     console.log('projectId:', projectId);
   };
+
+  console.log(props.location)
 
   return (
     <form className='home' onSubmit={getProject}>
