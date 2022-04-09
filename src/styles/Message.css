@@ -1,3 +1,16 @@
+.message {
+  width: 100%;
+  text-align: right;
+}
+
+.message label {
+  margin: 0 2px;
+}
+
+.message.admin {
+  text-align: left;
+}
+
 .message.client {
   text-align: right;
 }

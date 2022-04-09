@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { format as formatDate } from 'date-fns';
 import LabelWithValue from 'common/LabelWithValue';
 import TextInput from 'common/TextInput';
 import 'styles/ProjectInfo.css';
@@ -14,6 +15,9 @@ export default function ProjectInfo({ project = {} }) {
     contact,
     emailOrPhone,
   } = projectData;
+  const formattedDateRequested = (dateRequested)
+    ? formatDate(dateRequested, 'MM/dd/yyyy')
+    : null;
 
   function handleSubmit() {
 
@@ -45,7 +49,7 @@ export default function ProjectInfo({ project = {} }) {
     <section className='project-info'>
       <LabelWithValue value={client}>Client</LabelWithValue>
       <LabelWithValue value={projectName}>Project</LabelWithValue>
-      <LabelWithValue value={dateRequested}>Date Requested</LabelWithValue>
+      <LabelWithValue value={formattedDateRequested}>Date Requested</LabelWithValue>
       <LabelWithValue value={status}>Status</LabelWithValue>
       <LabelWithValue value={contact}>Contact</LabelWithValue>
       <LabelWithValue value={emailOrPhone}>Email/Phone</LabelWithValue>
@@ -65,7 +69,7 @@ export default function ProjectInfo({ project = {} }) {
         {projectName}
       </TextInput>
       <TextInput name='date-requested' label='Date Requested' onChange={editReport}>
-        {dateRequested}
+        {formattedDateRequested}
       </TextInput>
       <TextInput name='status' label='Status' onChange={editReport}>
         {status}

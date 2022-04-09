@@ -1,8 +1,10 @@
 .message-input {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
   margin-top: 40px;
 }
 
 .message-input input {
-  width: 50%;
+  width: 75%;
 }

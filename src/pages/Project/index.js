@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { MessageContext } from 'context';
 import ProjectInfo from './ProjectInfo';
 import Phases from './Phases';
-import { MessageContext } from 'context';
 import 'styles/Project.css';
 
 import mocks from 'mocks';
