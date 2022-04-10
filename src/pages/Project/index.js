@@ -27,13 +27,13 @@ export default function Project() {
         return project.id.toString() === projectId;
       })[0];
 
+      if (!project.id) return <Navigate to='/404' />
+
       setProject(project);
     };
 
     getProject();
   }, [projectId]);
-
-  if (!project.id) return <Navigate to='/404' />
 
   return (
     <article className='project'>
