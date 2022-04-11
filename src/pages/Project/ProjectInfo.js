@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { format as formatDate } from 'date-fns';
+import ApiService from 'services/api-service';
 import LabelWithValue from 'common/LabelWithValue';
 import TextInput from 'common/TextInput';
 import 'styles/ProjectInfo.css';
@@ -8,28 +9,44 @@ export default function ProjectInfo({ project = {} }) {
   const [isEditing, setEditStatus] = useState(false);
   const [projectData, setProjectData] = useState(project);
   const {
-    projectName,
+    name,
     client,
     dateRequested,
-    status,
+    phase,
     contact,
     emailOrPhone,
   } = projectData;
-  const formattedDateRequested = (dateRequested)
-    ? formatDate(dateRequested, 'MM/dd/yyyy')
-    : null;
 
-  function handleSubmit() {
+  let labelFormattedDateRequested;
+  let inputFormattedDateRequested;
+
+  if (new Date(dateRequested).getTime()) {
+    const date = new Date(dateRequested);
+
+    labelFormattedDateRequested = formatDate(date, 'M-d-yyyy');
+    inputFormattedDateRequested = formatDate(date, 'yyyy-MM-dd');
+  }
+
+  async function handleSubmit() {
+    const { id } = projectData;
+    const path = '/projects/' + id;
+    const body = { projectData };
+
+    const wasUpdated = await ApiService.patchRequest(path, body);
+
+    if (!wasUpdated) {
+      setProjectData(project);
+    }
 
     setEditStatus(false);
   };
 
-  async function editReport(evt) {
+  function editProject(evt) {
     const fields = [
       'client',
-      'project-name',
+      'name',
       'date-requested',
-      'status',
+      'phase',
       'contact',
       'email-or-phone'
     ];
@@ -47,9 +64,11 @@ export default function ProjectInfo({ project = {} }) {
   if (!isEditing) return (
     <section className='project-info'>
       <LabelWithValue value={client}>Client</LabelWithValue>
-      <LabelWithValue value={projectName}>Project</LabelWithValue>
-      <LabelWithValue value={formattedDateRequested}>Date Requested</LabelWithValue>
-      <LabelWithValue value={status}>Status</LabelWithValue>
+      <LabelWithValue value={name}>Project</LabelWithValue>
+      <LabelWithValue value={labelFormattedDateRequested}>
+        Date Requested
+      </LabelWithValue>
+      <LabelWithValue value={phase}>Status</LabelWithValue>
       <LabelWithValue value={contact}>Contact</LabelWithValue>
       <LabelWithValue value={emailOrPhone}>Email/Phone</LabelWithValue>
 
@@ -61,22 +80,27 @@ export default function ProjectInfo({ project = {} }) {
 
   if (isEditing) return (
     <section className='project-info editing'>
-      <TextInput name='client' label='Client' onChange={editReport}>
+      <TextInput name='client' label='Client' onChange={editProject}>
         {client}
       </TextInput>
-      <TextInput name='project-name' label='Project' onChange={editReport}>
-        {projectName}
+      <TextInput name='name' label='Project' onChange={editProject}>
+        {name}
       </TextInput>
-      <TextInput name='date-requested' label='Date Requested' onChange={editReport}>
-        {formattedDateRequested}
+      <TextInput
+        type='date'
+        name='date-requested'
+        label='Date Requested'
+        onChange={editProject}
+      >
+        {inputFormattedDateRequested}
       </TextInput>
-      <TextInput name='status' label='Status' onChange={editReport}>
-        {status}
+      <TextInput name='phase' label='Status' onChange={editProject}>
+        {phase}
       </TextInput>
-      <TextInput name='contact' label='Contact' onChange={editReport}>
+      <TextInput name='contact' label='Contact' onChange={editProject}>
         {contact}
       </TextInput>
-      <TextInput name='email-or-phone' label='Email/Phone' onChange={editReport}>
+      <TextInput name='email-or-phone' label='Email/Phone' onChange={editProject}>
         {emailOrPhone}
       </TextInput>
 

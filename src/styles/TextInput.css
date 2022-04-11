@@ -1,0 +1,7 @@
+.text-input input[name='date-requested'] {
+  cursor: text;
+}
+
+.text-input input[name='date-requested']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

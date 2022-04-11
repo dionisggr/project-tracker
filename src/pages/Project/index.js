@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { MessageContext } from 'context';
+import ApiService from 'services/api-service';
 import ProjectInfo from './ProjectInfo';
 import Phases from './Phases';
 import 'styles/Project.css';
@@ -22,14 +23,24 @@ export default function Project() {
   };
 
   useEffect(() => {
-    function getProject() {
-      const project = mocks.projects.filter(project => {
-        return project.id.toString() === projectId;
-      })[0];
+    async function getProject() {
+      try {
+        let projectData;
 
-      if (!project.id) return <Navigate to='/404' />
+        if (projectId === 'demo') {
+          projectData = mocks.report;
+        }
+        
+        if (projectId) {
+          projectData = await ApiService.getRequest(`/projects/${projectId}`);
+        }
 
-      setProject(project);
+        if (!projectData) return <Navigate to='/404' />;
+
+        setProject({ ...projectData });
+      } catch (error) {
+        console.log({ error })
+      }
     };
 
     getProject();
@@ -40,7 +51,7 @@ export default function Project() {
       <ProjectInfo project={project} />
 
       <MessageContext.Provider value={{ addMessage, messages }}>
-        <Phases currentPhase={project.status} />
+        <Phases currentPhase={project.phase} />
       </MessageContext.Provider>
     </article>
   );
