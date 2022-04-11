@@ -14,11 +14,17 @@ export default function MessageInput({ phase }) {
   async function sendMessage(evt) {
     evt.preventDefault();
 
+    const authToken = window.localStorage.getItem('projectTrackerAuthToken');
+    const isLocalHost = window.location.hostname === 'localhost';
+    const allowedUsers = ['lili', 'doug', 'dio'];
+
+    const isAdmin = isLocalHost || allowedUsers.includes(authToken);
+
     if (!phase) return;
 
     const date = new Date();
     const message = evt.target.message.value;
-    const author = 'admin';
+    const author = isAdmin ? 'admin' : 'client';
     const messageData = { date, message, author, phase };
 
     await addMessage(messageData);
