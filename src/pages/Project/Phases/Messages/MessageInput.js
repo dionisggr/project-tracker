@@ -11,18 +11,19 @@ export default function MessageInput({ phase }) {
     setInputValue(evt.target.value);
   };
 
-  function sendMessage(evt) {
+  async function sendMessage(evt) {
     evt.preventDefault();
 
     if (!phase) return;
 
-    const id = Date.now().toString();
     const date = new Date();
     const message = evt.target.message.value;
     const author = 'admin';
-    const messageData = { id, date, message, author, phase };
+    const messageData = { date, message, author, phase };
 
-    addMessage(messageData);
+    await addMessage(messageData);
+
+    setInputValue('');
   };
 
   return (

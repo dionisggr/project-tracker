@@ -1,17 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import TextInput from 'common/TextInput';
 import 'styles/Home.css';
 
-export default function Home(props) {
-  function getProject(evt) {
+export default function Home() {
+  const navigate = useNavigate();
+
+  async function getProject(evt) {
     evt.preventDefault();
 
     const projectId = evt.target['project-id-input'].value;
 
-    // Awesome code to fetch Project from ID
-    console.log('projectId:', projectId);
+    navigate('/projects/' + projectId);
   };
-
-  console.log(props.location)
 
   return (
     <form className='home' onSubmit={getProject}>

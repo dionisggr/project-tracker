@@ -16,7 +16,7 @@ export default function Contact() {
     };
 
     // Send request API
-    console.log('request', request);
+    console.log('request:', request);
   };
 
   return (

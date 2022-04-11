@@ -13,7 +13,7 @@ export default function Main() {
         <Route path='/' element={<Home />} />
         <Route path='/request' element={<Request />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/project/:projectId' element={<Project />} />
+        <Route path='/projects/:projectId' element={<Project />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </main>

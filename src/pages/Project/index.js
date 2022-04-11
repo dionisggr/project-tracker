@@ -12,14 +12,26 @@ export default function Project() {
   const { projectId } = useParams();
   
   const [project, setProject] = useState({});
-  const { messages } = project;
+  const { messages = [] } = project;
 
-  function addMessage(message) {
-    messages.push(message);
+  async function addMessage(message) {
+    try {
+      Object.assign(message, { projectId });
 
-    const newProjectState = { ...project, messages };
+      const id = await ApiService.postRequest('/messages', { message });
 
-    setProject(newProjectState);
+      if (!id) return;
+
+      Object.assign(message, { id });
+
+      messages.push(message);
+
+      const newProjectState = { ...project, messages };
+
+      setProject(newProjectState);
+    } catch (error) {
+      console.log({ error });
+    }
   };
 
   useEffect(() => {

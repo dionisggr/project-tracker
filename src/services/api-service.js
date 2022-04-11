@@ -8,8 +8,8 @@ function validateResponse(res) {
   throw new Error('Error connecting to API.');
 };
 
-function getRequest(path = '', body) {   
-  return fetch(`${apiURL}${path}`, {
+async function getRequest(path = '', body) {   
+  return await fetch(`${apiURL}${path}`, {
     headers,
     body: JSON.stringify(body),
   })
@@ -17,8 +17,8 @@ function getRequest(path = '', body) {
     .catch(console.log);
 };
 
-function postRequest(path, body) {   
-  return fetch(`${apiURL}${path}`, {
+async function postRequest(path, body) {   
+  return await fetch(`${apiURL}${path}`, {
     method: 'POST',
     headers,
     body: JSON.stringify(body),
@@ -27,8 +27,8 @@ function postRequest(path, body) {
     .catch(console.log);
 };
 
-function deleteRequest(path, body) {   
-  return fetch(`${apiURL}${path}`, {
+async function deleteRequest(path, body) {   
+  return await fetch(`${apiURL}${path}`, {
     method: 'DELETE',
     headers,
     body: JSON.stringify(body),
@@ -37,8 +37,8 @@ function deleteRequest(path, body) {
     .catch(console.log);
 };
 
-function patchRequest(path, body) {   
-  return fetch(`${apiURL}${path}`, {
+async function patchRequest(path, body) {   
+  return await fetch(`${apiURL}${path}`, {
     method: 'PATCH',
     headers,
     body: JSON.stringify(body),
