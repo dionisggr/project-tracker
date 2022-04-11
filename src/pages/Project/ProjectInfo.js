@@ -37,13 +37,12 @@ export default function ProjectInfo({ project = {} }) {
 
     if (fields.includes(name)) {
       const camelCasedName = name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+
       setProjectData({ ...projectData, [camelCasedName]: value });
     }
   };
 
-  useEffect(() => {
-    setProjectData(project);
-  }, [project]);
+  useEffect(() => { setProjectData(project) }, [project]);
 
   if (!isEditing) return (
     <section className='project-info'>
