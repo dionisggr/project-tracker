@@ -1,16 +1,10 @@
 .home {
-  border: solid orange;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  padding-top: 5%;
 }
 
-.home .disclaimer {
-  position: absolute;
-  bottom: 10%;
-}
 
 .home a {
   margin-left: 5px;
