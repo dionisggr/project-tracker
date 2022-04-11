@@ -1,5 +1,4 @@
-// const apiURL = 'https://tec3-project-tracker.herokuapp.com';
-const apiURL = 'http://localhost:8000';
+const apiURL = 'https://tec3-project-tracker.herokuapp.com';
 const headers = { 'Content-Type': 'application/json' };
 
 function validateResponse(res) {
