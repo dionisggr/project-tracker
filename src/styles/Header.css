@@ -4,3 +4,7 @@ header {
   border: solid 1px;
   height: 85px;
 }
+
+.company-logo {
+  text-decoration: none;
+}

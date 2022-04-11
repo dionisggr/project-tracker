@@ -16,13 +16,15 @@ export default function Project() {
 
   async function addMessage(message) {
     try {
-      Object.assign(message, { projectId });
+      if (projectId !== 'demo') {
+        Object.assign(message, { projectId });
 
-      const id = await ApiService.postRequest('/messages', { message });
-
-      if (!id) return;
-
-      Object.assign(message, { id });
+        const id = await ApiService.postRequest('/messages', { message });
+  
+        if (!id) return;
+  
+        Object.assign(message, { id });
+      }
 
       messages.push(message);
 
@@ -40,10 +42,8 @@ export default function Project() {
         let projectData;
 
         if (projectId === 'demo') {
-          projectData = mocks.report;
-        }
-        
-        if (projectId) {
+          projectData = mocks.project;
+        } else if (projectId) {
           projectData = await ApiService.getRequest(`/projects/${projectId}`);
         }
 

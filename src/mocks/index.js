@@ -6,7 +6,7 @@ const project = {
   client: 'Tec3',
   contact: 'Dio',
   emailOrPhone: 'someawesome@email.com',
-  phase: 'Development',
+  phase: 'Invoicing',
   dateRequested: date,
   messages: [
     { id: '11', date, phase: 'Planning', author: 'client', message: 'Does this work?' },

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { format as formatDate } from 'date-fns';
 import ApiService from 'services/api-service';
 import LabelWithValue from 'common/LabelWithValue';
@@ -6,15 +7,16 @@ import TextInput from 'common/TextInput';
 import 'styles/ProjectInfo.css';
 
 export default function ProjectInfo({ project = {} }) {
+  const navigate = useNavigate();
   const [isEditing, setEditStatus] = useState(false);
   const [projectData, setProjectData] = useState(project);
   const {
-    name,
-    client,
-    dateRequested,
-    phase,
-    contact,
-    emailOrPhone,
+    name = '',
+    client = '',
+    contact = '',
+    emailOrPhone = '',
+    phase = 'Planning',
+    dateRequested = new Date(),
   } = projectData;
 
   let labelFormattedDateRequested;
@@ -23,19 +25,50 @@ export default function ProjectInfo({ project = {} }) {
   if (new Date(dateRequested).getTime()) {
     const date = new Date(dateRequested);
 
-    labelFormattedDateRequested = formatDate(date, 'M-d-yyyy');
+    labelFormattedDateRequested = formatDate(date, 'M/d/yyyy');
     inputFormattedDateRequested = formatDate(date, 'yyyy-MM-dd');
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+
+    const isMissingValues = Object.values(projectData).length < 6;
+
+    if (isMissingValues) return;
+
     const { id } = projectData;
-    const path = '/projects/' + id;
     const body = { projectData };
 
-    const wasUpdated = await ApiService.patchRequest(path, body);
+    let path = '/projects';
+    let wasUpdated;
+    let newId;
 
-    if (!wasUpdated) {
-      setProjectData(project);
+    if (id) {
+      path += `/${id}`;
+
+      if (project.id !== 'demo') {
+        wasUpdated = await ApiService.patchRequest(path, body);
+      } else {
+        wasUpdated = true;
+      }
+
+      if (!wasUpdated) {
+        setProjectData(project);
+      }
+    } else {
+      if (project.id !== 'demo') {
+        newId = await ApiService.postRequest(path, body);
+      } else {
+        newId = Date.now().toString();
+      }
+
+      if (newId) {
+        Object.assign(projectData, { id: newId });
+
+        setProjectData(projectData);
+
+        navigate('/projects/' + newId);
+      }
     }
 
     setEditStatus(false);
@@ -61,7 +94,7 @@ export default function ProjectInfo({ project = {} }) {
 
   useEffect(() => { setProjectData(project) }, [project]);
 
-  if (!isEditing) return (
+  if (project.id && !isEditing) return (
     <section className='project-info'>
       <LabelWithValue value={client}>Client</LabelWithValue>
       <LabelWithValue value={name}>Project</LabelWithValue>
@@ -78,7 +111,7 @@ export default function ProjectInfo({ project = {} }) {
     </section>
   );
 
-  if (isEditing) return (
+  if (!project.id || isEditing) return (
     <section className='project-info editing'>
       <TextInput name='client' label='Client' onChange={editProject}>
         {client}

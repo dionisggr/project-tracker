@@ -3,6 +3,8 @@ import MessageInput from './MessageInput';
 import 'styles/Messages.css';
 
 export default function Messages({ messages = [], phase = '' }) {
+  const randomId = Date.now().toString();
+
   return (
     <section className='messages'>
       {
@@ -12,7 +14,7 @@ export default function Messages({ messages = [], phase = '' }) {
 
       {
         messages.map(message => 
-          <Message messageData={message} key={message.id} />
+          <Message messageData={message} key={message.id || randomId} />
         )
       }
 
