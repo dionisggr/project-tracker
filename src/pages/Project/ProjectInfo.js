@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { format as formatDate } from 'date-fns';
 import ApiService from 'services/api-service';
-import LabelWithValue from 'common/LabelWithValue';
+import Label from 'common/Label';
 import TextInput from 'common/TextInput';
 import 'styles/ProjectInfo.css';
 
@@ -96,14 +96,14 @@ export default function ProjectInfo({ project = {} }) {
 
   if (project.id && !isEditing) return (
     <section className='project-info'>
-      <LabelWithValue value={client}>Client</LabelWithValue>
-      <LabelWithValue value={name}>Project</LabelWithValue>
-      <LabelWithValue value={labelFormattedDateRequested}>
+      <Label value={client}>Client</Label>
+      <Label value={name}>Project</Label>
+      <Label value={labelFormattedDateRequested}>
         Date Requested
-      </LabelWithValue>
-      <LabelWithValue value={phase}>Status</LabelWithValue>
-      <LabelWithValue value={contact}>Contact</LabelWithValue>
-      <LabelWithValue value={emailOrPhone}>Email/Phone</LabelWithValue>
+      </Label>
+      <Label value={phase}>Status</Label>
+      <Label value={contact}>Contact</Label>
+      <Label value={emailOrPhone}>Email/Phone</Label>
 
       <button type='button' className='edit' onClick={() => setEditStatus(true)}>
         Edit
