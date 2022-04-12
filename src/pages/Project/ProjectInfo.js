@@ -1,35 +1,85 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { format as formatDate } from 'date-fns';
-import LabelWithValue from 'common/LabelWithValue';
+import ApiService from 'services/api-service';
+import Label from 'common/Label';
 import TextInput from 'common/TextInput';
 import 'styles/ProjectInfo.css';
 
 export default function ProjectInfo({ project = {} }) {
+  const navigate = useNavigate();
   const [isEditing, setEditStatus] = useState(false);
   const [projectData, setProjectData] = useState(project);
   const {
-    projectName,
-    client,
-    dateRequested,
-    status,
-    contact,
-    emailOrPhone,
+    name = '',
+    client = '',
+    contact = '',
+    emailOrPhone = '',
+    phase = 'Planning',
+    dateRequested = new Date(),
   } = projectData;
-  const formattedDateRequested = (dateRequested)
-    ? formatDate(dateRequested, 'MM/dd/yyyy')
-    : null;
 
-  function handleSubmit() {
+  let labelFormattedDateRequested;
+  let inputFormattedDateRequested;
+
+  if (new Date(dateRequested).getTime()) {
+    const date = new Date(dateRequested);
+
+    labelFormattedDateRequested = formatDate(date, 'M/d/yyyy');
+    inputFormattedDateRequested = formatDate(date, 'yyyy-MM-dd');
+  }
+
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+
+    const isMissingValues = Object.values(projectData).length < 6;
+
+    if (isMissingValues) return;
+
+    const { id } = projectData;
+    const body = { projectData };
+
+    let path = '/projects';
+    let wasUpdated;
+    let newId;
+
+    if (id) {
+      path += `/${id}`;
+
+      if (project.id !== 'demo') {
+        wasUpdated = await ApiService.patchRequest(path, body);
+      } else {
+        wasUpdated = true;
+      }
+
+      if (!wasUpdated) {
+        setProjectData(project);
+      }
+    } else {
+      if (project.id !== 'demo') {
+        newId = await ApiService.postRequest(path, body);
+      } else {
+        newId = Date.now().toString();
+      }
+
+      if (newId) {
+        Object.assign(projectData, { id: newId });
+
+        setProjectData(projectData);
+
+        navigate('/projects/' + newId);
+      }
+    }
 
     setEditStatus(false);
   };
 
-  async function editReport(evt) {
+  function editProject(evt) {
     const fields = [
       'client',
-      'project-name',
+      'name',
       'date-requested',
-      'status',
+      'phase',
       'contact',
       'email-or-phone'
     ];
@@ -37,22 +87,23 @@ export default function ProjectInfo({ project = {} }) {
 
     if (fields.includes(name)) {
       const camelCasedName = name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+
       setProjectData({ ...projectData, [camelCasedName]: value });
     }
   };
 
-  useEffect(() => {
-    setProjectData(project);
-  }, [project]);
+  useEffect(() => { setProjectData(project) }, [project]);
 
-  if (!isEditing) return (
+  if (project.id && !isEditing) return (
     <section className='project-info'>
-      <LabelWithValue value={client}>Client</LabelWithValue>
-      <LabelWithValue value={projectName}>Project</LabelWithValue>
-      <LabelWithValue value={formattedDateRequested}>Date Requested</LabelWithValue>
-      <LabelWithValue value={status}>Status</LabelWithValue>
-      <LabelWithValue value={contact}>Contact</LabelWithValue>
-      <LabelWithValue value={emailOrPhone}>Email/Phone</LabelWithValue>
+      <Label value={client}>Client</Label>
+      <Label value={name}>Project</Label>
+      <Label value={labelFormattedDateRequested}>
+        Date Requested
+      </Label>
+      <Label value={phase}>Status</Label>
+      <Label value={contact}>Contact</Label>
+      <Label value={emailOrPhone}>Email/Phone</Label>
 
       <button type='button' className='edit' onClick={() => setEditStatus(true)}>
         Edit
@@ -60,24 +111,29 @@ export default function ProjectInfo({ project = {} }) {
     </section>
   );
 
-  if (isEditing) return (
+  if (!project.id || isEditing) return (
     <section className='project-info editing'>
-      <TextInput name='client' label='Client' onChange={editReport}>
+      <TextInput name='client' label='Client' onChange={editProject}>
         {client}
       </TextInput>
-      <TextInput name='project-name' label='Project' onChange={editReport}>
-        {projectName}
+      <TextInput name='name' label='Project' onChange={editProject}>
+        {name}
       </TextInput>
-      <TextInput name='date-requested' label='Date Requested' onChange={editReport}>
-        {formattedDateRequested}
+      <TextInput
+        type='date'
+        name='date-requested'
+        label='Date Requested'
+        onChange={editProject}
+      >
+        {inputFormattedDateRequested}
       </TextInput>
-      <TextInput name='status' label='Status' onChange={editReport}>
-        {status}
+      <TextInput name='phase' label='Status' onChange={editProject}>
+        {phase}
       </TextInput>
-      <TextInput name='contact' label='Contact' onChange={editReport}>
+      <TextInput name='contact' label='Contact' onChange={editProject}>
         {contact}
       </TextInput>
-      <TextInput name='email-or-phone' label='Email/Phone' onChange={editReport}>
+      <TextInput name='email-or-phone' label='Email/Phone' onChange={editProject}>
         {emailOrPhone}
       </TextInput>
 

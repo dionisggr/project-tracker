@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { MessageContext } from 'context';
+import ApiService from 'services/api-service';
 import ProjectInfo from './ProjectInfo';
 import Phases from './Phases';
 import 'styles/Project.css';
@@ -11,25 +12,47 @@ export default function Project() {
   const { projectId } = useParams();
   
   const [project, setProject] = useState({});
-  const { messages } = project;
+  const { messages = [] } = project;
 
-  function addMessage(message) {
-    messages.push(message);
+  async function addMessage(message) {
+    try {
+      if (projectId !== 'demo') {
+        Object.assign(message, { projectId });
 
-    const newProjectState = { ...project, messages };
+        const id = await ApiService.postRequest('/messages', { message });
+  
+        if (!id) return;
+  
+        Object.assign(message, { id });
+      }
 
-    setProject(newProjectState);
+      messages.push(message);
+
+      const newProjectState = { ...project, messages };
+
+      setProject(newProjectState);
+    } catch (error) {
+      console.log({ error });
+    }
   };
 
   useEffect(() => {
-    function getProject() {
-      const project = mocks.projects.filter(project => {
-        return project.id.toString() === projectId;
-      })[0];
+    async function getProject() {
+      try {
+        let projectData;
 
-      if (!project.id) return <Navigate to='/404' />
+        if (projectId === 'demo') {
+          projectData = mocks.project;
+        } else if (projectId) {
+          projectData = await ApiService.getRequest(`/projects/${projectId}`);
+        }
 
-      setProject(project);
+        if (!projectData) return <Navigate to='/404' />;
+
+        setProject({ ...projectData });
+      } catch (error) {
+        console.log({ error })
+      }
     };
 
     getProject();
@@ -40,7 +63,7 @@ export default function Project() {
       <ProjectInfo project={project} />
 
       <MessageContext.Provider value={{ addMessage, messages }}>
-        <Phases currentPhase={project.status} />
+        <Phases currentPhase={project.phase} />
       </MessageContext.Provider>
     </article>
   );

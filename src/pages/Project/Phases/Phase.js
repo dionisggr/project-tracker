@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { ExpandMore, ExpandLess } from '@material-ui/icons';
 import { MessageContext } from 'context';
-import LabelWithValue from 'common/LabelWithValue';
+import Label from 'common/Label';
 import Messages from './Messages';
 import 'styles/Phase.css';
 
@@ -54,12 +54,12 @@ export default function Phase({ phase, currentPhase, isCompleted }) {
       {
         (shouldOpen) &&
           <div className='phase-details'>
-            <LabelWithValue className='phase-goal' value={goal}>
+            <Label className='phase-goal' value={goal}>
               Goal
-            </LabelWithValue>
-            <LabelWithValue className='phase-date-started' value={dateStarted}>
+            </Label>
+            <Label className='phase-date-started' value={dateStarted}>
               Date Started
-            </LabelWithValue>
+            </Label>
 
             <Messages messages={filteredMessages} phase={phase} />
           </div>

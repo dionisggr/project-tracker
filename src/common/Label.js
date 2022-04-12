@@ -1,4 +1,4 @@
-export default function LabelWithValue(props) {
+export default function Label(props) {
   const { className = '', value = '' } = props;
 
   return (
