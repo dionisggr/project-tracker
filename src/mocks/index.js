@@ -2,11 +2,11 @@ const date = new Date();
 
 const project = {
   id: 'demo',
-  projectName: 'Project Tracker Website',
+  name: 'Project Tracker Website',
   client: 'Tec3',
   contact: 'Dio',
   emailOrPhone: 'someawesome@email.com',
-  status: 'Development',
+  phase: 'Invoicing',
   dateRequested: date,
   messages: [
     { id: '11', date, phase: 'Planning', author: 'client', message: 'Does this work?' },
@@ -17,8 +17,6 @@ const project = {
   ]
 };
 
-const mocks = {
-  projects: [ project ],
-};
+const mocks = { project };
 
 export default mocks;

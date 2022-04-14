@@ -1,12 +1,9 @@
-import 'styles/TextInput.css';
-
-export default function TextInput(props) {
-  const defaultName = `text-input-` + Date.now();
+export default function TextArea(props) {
+  const defaultName = `text-area-` + Date.now();
   const {
     name = defaultName,
     className = '',
     label = '',
-    type = 'text',
     placeholder = '',
     required = false,
     onChange = () => { },
@@ -23,18 +20,17 @@ export default function TextInput(props) {
   }
 
   return (
-    <div className={`text-input ${className}`}>
+    <div className={`text-area ${className}`}>
       { label && <label htmlFor={name}>{label}:</label> }
 
-      <input
-        type={type}
+      <textarea
         name={name}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
         defaultValue={defaultValueString}
         required={required}
-      ></input>
+      ></textarea>
     </div>
   );
 };

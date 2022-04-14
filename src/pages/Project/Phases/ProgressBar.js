@@ -1,12 +1,11 @@
-export default function ProgressBar({ percent }) {
-  console.log(percent);
-  return (
-    <section className='progress-bar'>
-      <div className='container'>
-        <div className='bar'>
+import 'styles/ProgressBar.css';
 
-        </div>
-      </div>
+export default function ProgressBar({ percent }) {
+  return (
+    <section className='progress container'>
+      <div style={{ width: percent + '%' }} className='progress bar' />
+
+      <label className='percent'>{Math.round(percent)}%</label>
     </section>
   );
 };

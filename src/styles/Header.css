@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px;
+  height: 85px;
+}
+
+.company-logo {
+  text-decoration: none;
+}

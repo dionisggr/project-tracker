@@ -4,7 +4,7 @@ import 'styles/Message.css';
 export default function Message({ messageData = {} }) {
   const { date = '', author = '', message = '' } = messageData;
   const className = 'message ' + author;
-  const formattedDate = formatDate(date, 'MM/dd/yyyy hh:mmaaa');
+  const formattedDate = formatDate(new Date(date), 'MM/dd/yyyy hh:mmaaa');
 
   return (
     <div className={className}>

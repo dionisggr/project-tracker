@@ -11,18 +11,25 @@ export default function MessageInput({ phase }) {
     setInputValue(evt.target.value);
   };
 
-  function sendMessage(evt) {
+  async function sendMessage(evt) {
     evt.preventDefault();
+
+    const authToken = window.localStorage.getItem('projectTrackerAuthToken');
+    const isLocalHost = window.location.hostname === 'localhost';
+    const allowedUsers = ['lili', 'doug', 'dio'];
+
+    const isAdmin = isLocalHost || allowedUsers.includes(authToken);
 
     if (!phase) return;
 
-    const id = Date.now().toString();
     const date = new Date();
     const message = evt.target.message.value;
-    const author = 'admin';
-    const messageData = { id, date, message, author, phase };
+    const author = isAdmin ? 'admin' : 'client';
+    const messageData = { date, message, author, phase };
 
-    addMessage(messageData);
+    await addMessage(messageData);
+
+    setInputValue('');
   };
 
   return (

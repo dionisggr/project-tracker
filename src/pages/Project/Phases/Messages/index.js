@@ -11,9 +11,11 @@ export default function Messages({ messages = [], phase = '' }) {
       }
 
       {
-        messages.map(message => 
-          <Message messageData={message} key={message.id} />
-        )
+        messages.map(message => {
+          const key = message.id || Math.floor(Math.random() * 100);
+          
+          return<Message messageData={message} key={key} />
+        })
       }
 
       <MessageInput phase={phase} />
