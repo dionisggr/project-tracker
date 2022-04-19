@@ -13,11 +13,11 @@ export default function Phases({ currentPhase }) {
     'Complete',
   ];
   const currentPhaseIndex = phases.indexOf(currentPhase);
-  const progressPercentage = (currentPhaseIndex + 1) / phases.length * 100;
+  const progress = `${currentPhaseIndex + 1}/${phases.length}`;
 
   return (
     <section className='phases'>
-      <ProgressBar percent={progressPercentage} />
+      <ProgressBar progress={progress} />
       
       {
         phases.map(phase => {

@@ -7,8 +7,7 @@
 }
 
 .text-input label {
-  margin-right: 10px;
-  min-width: fit-content;
+  margin: 0;
 }
 
 .text-input input {

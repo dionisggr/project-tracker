@@ -1,0 +1,12 @@
+.contact {
+  text-align: center;
+  padding: 25px;
+  width: 100%;
+  position: absolute;
+}
+
+.contact form {
+  margin: auto;
+  text-align: right;
+  max-width: 800px;
+}

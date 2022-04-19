@@ -1,6 +1,8 @@
 main {
   min-height: calc(100vh - 130px);
   position: relative;
+  padding-top: 6vmin;
+  padding-bottom: 150px;
 }
 
 .project-id-input:focus, input:focus, input {
