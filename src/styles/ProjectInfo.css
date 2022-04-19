@@ -21,3 +21,12 @@
   right: 10%;
   top: 40%;
 }
+
+.project-info .text-input input[name='date-requested'] {
+  cursor: text;
+}
+
+.project-info .text-input input[name='date-requested']
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

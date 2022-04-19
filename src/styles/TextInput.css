@@ -1,7 +1,19 @@
-.text-input input[name='date-requested'] {
-  cursor: text;
+.text-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 
-.text-input input[name='date-requested']::-webkit-calendar-picker-indicator {
-  cursor: pointer;
+.text-input label {
+  margin-right: 10px;
+  min-width: fit-content;
+}
+
+.text-input input {
+  width: 100%;
+  height: 2.5em;
+  border: solid 1px gray;
+  border-radius: 5px;
 }

@@ -12,7 +12,15 @@ body {
 
 .App {
   position: relative;
-  border: solid green;
   display: flex;
   flex-direction: column;
+}
+
+.button {
+  padding: 8px 30px;
+  border-radius: 10px;
+  border-color: rgb(0, 157, 255);
+  color: white;
+  box-shadow: 0 0 40px 40px rgb(0, 157, 255) inset, 0 0 0 0 rgb(0, 157, 255);
+  transition: all 150ms ease-in-out;
 }

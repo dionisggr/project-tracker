@@ -1,6 +1,10 @@
-import Contact from './Contact';
+import Form from 'common/Form';
 import 'styles/Request.css';
 
 export default function Request() {
-  return <Contact />;
+  return (
+    <article className='request'>
+      <Form />
+    </article>
+  );
 };

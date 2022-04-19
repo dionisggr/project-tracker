@@ -1,8 +1,12 @@
 header {
   display: flex;
   justify-content: space-between;
-  border: solid 1px;
-  height: 85px;
+  padding: 0 25px;
+  background-color: rgb(56, 107, 210);
+}
+
+header * {
+  color: rgb(255, 255, 255);
 }
 
 .company-logo {

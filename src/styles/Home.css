@@ -3,14 +3,24 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  margin-top: 100px;
 }
-
 
 .home a {
   margin-left: 5px;
 }
 
-.project-id-input {
-  width: fit-content;
-  margin: 15px 0 50px 0;
+.home button:hover {
+  box-shadow: 0 0 10px 0 rgb(110, 110, 110) inset, 0 0 10px 4px rgb(110, 110, 110);
+  color: white;
 }
+
+.project-id-input input {
+  width: fit-content;
+  margin: 15px auto 50px auto;
+  line-height: 2em;
+  border: solid 1px rgba(128, 128, 128, 0.914);
+  border-radius: 5px;
+  text-indent: 5px;
+}
+

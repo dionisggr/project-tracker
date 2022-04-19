@@ -1,10 +1,14 @@
 .request {
-  border: solid red;
-  width: fit-content;
   text-align: center;
-  margin: auto;
-  margin-top: 10%;
   padding: 25px;
+  width: 100%;
+  position: absolute;
+}
+
+.request form {
+  margin: auto;
+  text-align: right;
+  max-width: 800px;
 }
 
 .request button {

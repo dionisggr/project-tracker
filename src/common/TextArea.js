@@ -1,3 +1,5 @@
+import 'styles/TextArea.css';
+
 export default function TextArea(props) {
   const defaultName = `text-area-` + Date.now();
   const {
