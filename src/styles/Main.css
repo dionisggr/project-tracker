@@ -1,7 +1,7 @@
 main {
   min-height: calc(100vh - 130px);
   position: relative;
-  padding-top: 6vmin;
+  padding-top: 3vmin;
   padding-bottom: 150px;
 }
 

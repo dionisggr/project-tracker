@@ -1,0 +1,13 @@
+.label {
+  width: fit-content;
+}
+
+.label label {
+  margin: 0;
+  font-weight: 600;
+}
+
+.label span {
+  margin: 0;
+  margin-left: 10px;
+}

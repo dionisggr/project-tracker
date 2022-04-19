@@ -4,6 +4,7 @@ import { format as formatDate } from 'date-fns';
 import ApiService from 'services/api-service';
 import Label from 'common/Label';
 import TextInput from 'common/TextInput';
+import Select from 'common/Select';
 import 'styles/ProjectInfo.css';
 
 export default function ProjectInfo({ project = {} }) {
@@ -105,7 +106,7 @@ export default function ProjectInfo({ project = {} }) {
       <Label value={contact}>Contact</Label>
       <Label value={emailOrPhone}>Email/Phone</Label>
 
-      <button type='button' className='edit' onClick={() => setEditStatus(true)}>
+      <button type='button' className='edit button' onClick={() => setEditStatus(true)}>
         Edit
       </button>
     </section>
@@ -127,9 +128,15 @@ export default function ProjectInfo({ project = {} }) {
       >
         {inputFormattedDateRequested}
       </TextInput>
-      <TextInput name='phase' label='Status' onChange={editProject}>
-        {phase}
-      </TextInput>
+      <Select label='Status:' name='status'>
+        <option value='planning'>Planning</option>
+        <option value='invoicing'>Invoicing</option>
+        <option value='design'>Design</option>
+        <option value='development'>Development</option>
+        <option value='qa'>QA / Testing</option>
+        <option value='release'>Release / Monitoring</option>
+        <option value='complete'>Complete</option>
+      </Select>
       <TextInput name='contact' label='Contact' onChange={editProject}>
         {contact}
       </TextInput>
@@ -137,7 +144,7 @@ export default function ProjectInfo({ project = {} }) {
         {emailOrPhone}
       </TextInput>
 
-      <button type='button' className='submit' onClick={handleSubmit}>
+      <button type='button' className='submit button' onClick={handleSubmit}>
         Submit
       </button>
     </section>
