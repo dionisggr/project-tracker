@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { MessageContext } from 'context';
 import ApiService from 'services/api-service';
 import ProjectInfo from './ProjectInfo';
 import Phases from './Phases';
+import Spinner from 'common/Spinner';
 import 'styles/Project.css';
 
 import mocks from 'mocks';
 
 export default function Project() {
+  const navigate = useNavigate();
+
   const { projectId } = useParams();
   
   const [project, setProject] = useState({});
@@ -51,12 +54,16 @@ export default function Project() {
 
         setProject({ ...projectData });
       } catch (error) {
-        console.log({ error })
+        console.log({ error });
       }
     };
 
     getProject();
-  }, [projectId]);
+  }, [projectId, navigate]);
+
+  if (!Object.keys(project).length) {
+    return <Spinner />;
+  }
 
   return (
     <article className='project'>

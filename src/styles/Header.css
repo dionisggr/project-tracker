@@ -9,6 +9,7 @@ header * {
   color: rgb(255, 255, 255);
 }
 
-.company-logo {
+header a:hover {
   text-decoration: none;
+  color: yellow;
 }

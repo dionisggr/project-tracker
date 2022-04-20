@@ -5,12 +5,16 @@ import ApiService from 'services/api-service';
 import Label from 'common/Label';
 import TextInput from 'common/TextInput';
 import Select from 'common/Select';
+import Modal from 'common/Modal';
+import utils from 'services/utils';
 import 'styles/ProjectInfo.css';
 
 export default function ProjectInfo(props) {
   const navigate = useNavigate();
   
   const [isEditing, setEditStatus] = useState(false);
+  const [error, setError] = useState('');
+
   const { project = {}, setProject = () => { } } = props;
   const {
     name = '',
@@ -37,27 +41,35 @@ export default function ProjectInfo(props) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    const isMissingValues = Object.values(project).length < 6;
-
-    if (isMissingValues) return;
-
     const { id } = project;
     const body = { project };
 
     let path = '/projects';
     let newId;
 
-    Object.assign(project, { phase: currentPhase });
+    Object.assign(project, { phase: currentPhase || 'Planning' });
+
+    if (!project.dateRequested) {
+      Object.assign(project, { dateRequested: new Date() });
+    };
+
+    const isMissingRequiredValues = Object.values(project).length < 6;
+
+    if (isMissingRequiredValues) {
+      setError('Please make sure to fill out all fields.');
+
+      return;
+    }
 
     try {
       if (id) {
         if (!isDemo) {
           path += `/${id}`;
-          
+
           await ApiService.patchRequest(path, body);
         }
 
-        setProject({ ...project, phase: currentPhase });
+        setProject(project);
       } else {
         if (isDemo) {
           newId = Date.now().toString();
@@ -101,7 +113,21 @@ export default function ProjectInfo(props) {
   useEffect(() => {
     setProject(project);
     setPhase(project.phase);
+
+    return () => { };
   }, [project, setProject]);
+
+  if (error) {
+    return (
+      <Modal
+        className='error'
+        title='ERROR!'
+        message={error}
+        show={error}
+        options={{ 'BACK': () => setError('')}}
+      />
+    );
+  };
 
   if (project.id && !isEditing) return (
     <section className='project-info'>
@@ -114,18 +140,21 @@ export default function ProjectInfo(props) {
       <Label value={contact}>Contact</Label>
       <Label value={emailOrPhone}>Email/Phone</Label>
 
-      <button type='button' className='edit button' onClick={() => setEditStatus(true)}>
-        Edit
-      </button>
+      {
+        utils.isAdmin &&
+          <button type='button' className='edit button' onClick={() => setEditStatus(true)}>
+            Edit
+          </button>
+      }
     </section>
   );
 
   if (!project.id || isEditing) return (
     <section className='project-info editing'>
-      <TextInput name='client' label='Client' onChange={editProject}>
+      <TextInput name='client' label='Client' onChange={editProject} required >
         {client}
       </TextInput>
-      <TextInput name='name' label='Project' onChange={editProject}>
+      <TextInput name='name' label='Project' onChange={editProject} required >
         {name}
       </TextInput>
       <TextInput
@@ -133,6 +162,7 @@ export default function ProjectInfo(props) {
         name='date-requested'
         label='Date Requested'
         onChange={editProject}
+        required 
       >
         {inputFormattedDateRequested}
       </TextInput>
@@ -150,14 +180,14 @@ export default function ProjectInfo(props) {
         <option value='Release / Monitoring'>Release / Monitoring</option>
         <option value='Complete'>Complete</option>
       </Select>
-      <TextInput name='contact' label='Contact' onChange={editProject}>
+      <TextInput name='contact' label='Contact' onChange={editProject} required >
         {contact}
       </TextInput>
-      <TextInput name='email-or-phone' label='Email/Phone' onChange={editProject}>
+      <TextInput name='email-or-phone' label='Email/Phone' onChange={editProject} required >
         {emailOrPhone}
       </TextInput>
 
-      <button type='button' className='submit button' onClick={handleSubmit}>
+      <button type='button' className='submit button' onClick={handleSubmit} required >
         Submit
       </button>
     </section>

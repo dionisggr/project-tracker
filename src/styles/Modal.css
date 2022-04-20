@@ -1,0 +1,39 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(75, 75, 75, 0.692);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: static;
+  border: solid 1.5px rgba(0, 0, 0, 0.407);
+  background-color: rgb(175, 175, 175);
+  height: fit-content;
+  width: fit-content;
+  padding: 50px 100px;
+  margin-bottom: 7vw;
+}
+
+.modal button {
+  width: 100px;
+  line-height: 2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal button + button {
+  margin-left: 15px;
+}

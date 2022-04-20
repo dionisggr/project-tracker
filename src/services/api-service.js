@@ -12,8 +12,7 @@ async function getRequest(path = '', body) {
     headers,
     body: JSON.stringify(body),
   })
-    .then(validateResponse)
-    .catch(console.log);
+    .then(validateResponse);
 };
 
 async function postRequest(path, body) {   
@@ -22,8 +21,7 @@ async function postRequest(path, body) {
     headers,
     body: JSON.stringify(body),
   })
-    .then(validateResponse)
-    .catch(console.log);
+    .then(validateResponse);
 };
 
 async function deleteRequest(path, body) {   
@@ -32,8 +30,7 @@ async function deleteRequest(path, body) {
     headers,
     body: JSON.stringify(body),
   })
-    .then(validateResponse)
-    .catch(console.log);
+    .then(validateResponse);
 };
 
 async function patchRequest(path, body) {   
@@ -42,8 +39,7 @@ async function patchRequest(path, body) {
     headers,
     body: JSON.stringify(body),
   })
-    .then(validateResponse)
-    .catch(console.log);
+    .then(validateResponse);
 };
 
 const ApiService = {

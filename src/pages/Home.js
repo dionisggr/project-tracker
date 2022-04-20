@@ -23,6 +23,7 @@ export default function Home() {
         className='project-id-input'
         placeholder='Project ID'
         name='project-id-input'
+        required
       />
 
       <p className='disclaimer'>
@@ -33,7 +34,7 @@ export default function Home() {
         </a>.
       </p>
 
-      <button className='button' type='submit'>Search</button>
+      <button type='submit' className='button'>Search</button>
     </form>
   );
 };

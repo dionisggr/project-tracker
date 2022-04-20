@@ -1,0 +1,11 @@
+.not-found {
+  text-align: center;
+  padding: 8vw;
+}
+
+.not-found a {
+  display: inline-block;
+  margin-top: 6vw;
+  text-decoration: none;
+  color: white;
+}

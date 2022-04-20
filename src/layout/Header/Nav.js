@@ -1,26 +1,25 @@
+import { Link } from 'react-router-dom';
+import utils from 'services/utils';
 import 'styles/Nav.css';
 
 export default function Nav() {
-  const authToken = window.localStorage.getItem('projectTrackerAuthToken');
-  const isLocalHost = window.location.hostname === 'localhost';
-  const allowedUsers = ['lili', 'doug', 'dio'];
-
-  const isAdmin = isLocalHost || allowedUsers.includes(authToken);
   const isHomePage = window.location.pathname === '/';
 
   return (
     <nav>
-      <a href='/projects/demo'>(Demo)</a>
+      <Link to='/projects/demo'>(Demo)</Link>
 
-      {!isHomePage && <a href='/'>Home</a>}
+      {!isHomePage && <Link to='/'>Home</Link>}
 
       {
-        (!isAdmin)
-          ? <a href='/request'>Request A Project</a>
-          : <a href='/projects/add'>Add A Project</a>
+        (!utils.isAdmin)
+          ? <Link to='/request'>Request A Project</Link>
+          : <Link to='/projects/add'>Add A Project</Link>
       }
 
-      {!isAdmin && <a href='/contact'>Contact Us</a>}
+      {!utils.isAdmin && <Link to='/contact'>Contact Us</Link>}
+
+      {utils.isAdmin && <Link to='/projects'>All Projects</Link>}
     </nav>
   );
 };
