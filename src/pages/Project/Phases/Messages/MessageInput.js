@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
+import { Message } from '@material-ui/icons';
 import { MessageContext } from 'context';
 import 'styles/MessageInput.css';
 
@@ -34,9 +34,11 @@ export default function MessageInput({ phase }) {
 
   return (
     <form className='message-input' onSubmit={sendMessage}>
-      <span>icon</span>
-      <input type='text' name='message' value={inputValue} onChange={handleInput} />
-      <button type='submit'>Send</button>
+      <div className='input-container'>
+        <span className='icon'>{<Message />}</span>
+        <input type='text' name='message' value={inputValue} onChange={handleInput} />
+      </div>
+      <button type='submit' className='button'>Send</button>
     </form>
   );
 };

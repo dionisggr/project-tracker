@@ -4,15 +4,20 @@ import 'styles/Message.css';
 export default function Message({ messageData = {} }) {
   const { date = '', author = '', message = '' } = messageData;
   const className = 'message ' + author;
+  
   const formattedDate = formatDate(new Date(date), 'MM/dd/yyyy hh:mmaaa');
+  const capitalizedAuthor = author[0].toUpperCase() + author.slice(1);
+
+  const isAdmin = author === 'admin';
 
   return (
     <div className={className}>
-      <div className='message-header'>
-        <label>{formattedDate}</label>
-        <label>{author}</label>
+      <label className='author'>{capitalizedAuthor}</label>
+      <div className='content'>
+        {!isAdmin && <label className='date-time'>{formattedDate}</label>}
+        <span className='text'>{message}</span>
+        {isAdmin && <label className='date-time'>{formattedDate}</label>}
       </div>
-      <span className='message-content'>{message}</span>
     </div>
   );
 };

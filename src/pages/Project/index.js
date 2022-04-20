@@ -60,7 +60,7 @@ export default function Project() {
 
   return (
     <article className='project'>
-      <ProjectInfo project={project} />
+      <ProjectInfo project={project} setProject={setProject} />
 
       <MessageContext.Provider value={{ addMessage, messages }}>
         <Phases currentPhase={project.phase} />

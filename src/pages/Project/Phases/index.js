@@ -4,15 +4,54 @@ import 'styles/Phases.css';
 
 export default function Phases({ currentPhase }) {
   const phases = [
-    'Planning',
-    'Invoicing',
-    'Design',
-    'Development',
-    'QA / Testing',
-    'Release / Monitoring',
-    'Complete',
+    {
+      name: 'Planning',
+      tasks: [
+        'Gathering of user stories from client for project or features of interest',
+        'Documentation of all requests, notes and UX potential edge cases considered',
+      ],
+    },
+    {
+      name: 'Invoicing',
+      tasks: [
+        'Design and Development teams consult for time estimation',
+      ],
+    },
+    {
+      name: 'Design',
+      tasks: [
+        'Design mock-up / prototype'
+      ],
+    },
+    {
+      name: 'Development',
+      tasks: [
+        'Working the magic'
+      ],
+    },
+    {
+      name: 'QA / Testing',
+      tasks: [
+        '"Bug Bash"',
+        'Confirmation of matching functionality with UX expectations and defined user stories',
+        'Iterative navigation to identify potential errors in edge cases'
+      ],
+    },
+    {
+      name: 'Release / Monitoring',
+      tasks: [
+        '2 weeks duration',
+        'Client-based bug identification process'
+      ],
+    },
+    {
+      name: 'Complete',
+      tasks: [
+        'All steps completed successfully'
+      ],
+    },
   ];
-  const currentPhaseIndex = phases.indexOf(currentPhase);
+  const currentPhaseIndex = phases.map(({ name }) => name).indexOf(currentPhase);
   const progress = `${currentPhaseIndex + 1}/${phases.length}`;
 
   return (
@@ -20,14 +59,15 @@ export default function Phases({ currentPhase }) {
       <ProgressBar progress={progress} />
       
       {
-        phases.map(phase => {
-          const isCompleted = phases.indexOf(phase) < currentPhaseIndex;
+        phases.map(({ name, tasks }, idx) => {
+          const isCompleted = idx < currentPhaseIndex;
 
           return (
             <Phase
-              key={phase}
-              phase={phase}
+              key={name}
+              phase={name}
               currentPhase={currentPhase}
+              tasks={tasks}
               isCompleted={isCompleted}
             />
           );

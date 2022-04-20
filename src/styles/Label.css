@@ -10,4 +10,5 @@
 .label span {
   margin: 0;
   margin-left: 10px;
+  z-index: 2;
 }

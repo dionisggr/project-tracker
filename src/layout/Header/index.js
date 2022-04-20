@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <Link to='/' className='company-logo'>
-        <h1>Project Tracker</h1>
+        <h1>ProjectTracker</h1>
       </Link>
         
       <Nav />
