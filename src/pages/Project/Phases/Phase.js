@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
 import { ExpandMore, ExpandLess } from '@material-ui/icons';
 import { MessageContext } from 'context';
-import Label from 'common/Label';
 import Messages from './Messages';
 import 'styles/Phase.css';
 
-export default function Phase({ phase, currentPhase, isCompleted }) {
+export default function Phase(props) {
+  const { phase, currentPhase, isCompleted, tasks = [] } = props;
+
   const isCurrentPhase = phase === currentPhase;
 
   const [shouldOpen, setOpenStatus] = useState(isCurrentPhase);
@@ -13,8 +14,6 @@ export default function Phase({ phase, currentPhase, isCompleted }) {
 
   const phaseName = phase[0].toUpperCase() + phase.slice(1);
   const filteredMessages = messages.filter(message => message.phase === phase);
-  const goal = '';
-  const dateStarted = '';
 
   let className = 'phase';
 
@@ -54,12 +53,10 @@ export default function Phase({ phase, currentPhase, isCompleted }) {
       {
         (shouldOpen) &&
           <div className='phase-details'>
-            <Label className='phase-goal' value={goal}>
-              Goal
-            </Label>
-            <Label className='phase-date-started' value={dateStarted}>
-              Date Started
-            </Label>
+            <label className='phase-details-label' htmlFor='phase-tasks'>Steps:</label>
+            <ul className='phase-tasks' >
+              {tasks.map(task => <li key={task}>{task}</li>)}
+            </ul>
 
             <Messages messages={filteredMessages} phase={phase} />
           </div>

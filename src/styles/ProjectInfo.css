@@ -2,23 +2,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
+  min-height: 350px;
 }
 
-.project-info .text-input {
-  width: fit-content;
+.project-info .label {
+  min-width: 400px;
+  font-size: 20px;
 }
 
-.project-info .text-input,
-.project-info .label-with-value {
-  margin: 5px 0;
+.project-info .label label {
+  min-width: 150px;
+  text-align: right;
 }
 
 .project-info button {
   position: absolute;
-  right: 10%;
+  padding: 5px 15px;
+  right: 5%;
   top: 40%;
 }
 
@@ -29,4 +32,36 @@
 .project-info .text-input input[name='date-requested']
 ::-webkit-calendar-picker-indicator {
   cursor: pointer;
+}
+
+.project-info.editing {
+  align-items: flex-end;
+  padding-right: 10vmax;
+}
+
+.project-info.editing .text-input {
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  margin: 5px 0;
+}
+
+.project-info.editing .text-input input {
+  min-width: 400px;
+}
+
+@media screen and (max-width: 1000px) {
+  .project-info button {
+    position: static;
+    width: fit-content;
+    margin: auto;
+    margin-top: 25px;
+  }
+}
+
+
+@media screen and (max-width: 1325px) {
+  .project-info.editing {
+    padding-right: 0;
+  }
 }

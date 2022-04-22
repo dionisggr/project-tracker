@@ -1,0 +1,35 @@
+.add-project {
+  padding: 3vw 15px;
+}
+
+.add-project h3 {
+  text-align: center;
+}
+
+.add-project .you-are-awesome {
+  width: 100%;
+  text-align: center;
+}
+
+.add-project .project-info {
+  padding-right: 0;
+  width: fit-content;
+  margin: 25px auto;
+}
+
+.add-project .project-info .text-input {
+  margin-right: 11%;
+}
+
+.add-project input[type='date'] {
+  margin-right: 20px;
+}
+
+.add-project .project-info .select {
+  margin-right: 62px;
+}
+
+.add-project button {
+  position: static;
+  margin: 25px auto;
+}

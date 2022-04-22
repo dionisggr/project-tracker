@@ -1,0 +1,18 @@
+.select {
+  width: 100%;
+  text-align: right;
+  margin: 5px 0;
+}
+
+.select label {
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.select select {
+  width: 400px;
+  height: 2.5em;
+  border-radius: 5px;
+  padding-right: 10px;
+  text-indent: 3px;
+}

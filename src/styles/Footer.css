@@ -9,3 +9,9 @@ footer {
   height: 50px;
   width: 100%;
 }
+
+footer .policy {
+  text-decoration: underline;
+  color: white;
+  margin-left: 5px;
+}

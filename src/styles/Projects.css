@@ -1,0 +1,26 @@
+.projects .project {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border: solid 1px rgb(56, 107, 210);
+  background-color: rgba(128, 128, 128, 0.112);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 5px auto;
+}
+
+.projects h3 {
+  text-align: center;
+  margin: 2vw 15px;
+}
+
+.projects .project:hover {
+  background-color: rgba(56, 107, 210, 0.675);
+  color: white;
+}
+
+.projects .project-list {
+  padding: 0;
+}
