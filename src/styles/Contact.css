@@ -1,12 +1,8 @@
 .contact {
-  text-align: center;
-  padding: 25px;
-  width: 100%;
-  position: absolute;
-}
-
-.contact form {
+  /* width: 100%; */
+  /* position: absolute; */
   margin: auto;
-  text-align: right;
-  max-width: 800px;
+  margin-top: 5vmin;
+  padding: 0 15px;
+  max-width: 650px;
 }

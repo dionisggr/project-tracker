@@ -8,6 +8,7 @@
 
 .text-area label {
   margin: 0;
+  font-weight: 600;
 }
 
 .text-area textarea {
