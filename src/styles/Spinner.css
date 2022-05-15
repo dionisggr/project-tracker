@@ -11,6 +11,8 @@
   width: fit-content;
   margin: auto;
   padding: 25px;
+  width: 100%;
+  margin-top: 8vmin;
 }
 
 .spinner-container h3 {
@@ -23,8 +25,9 @@
   border: 20px solid #f3f3f3;
   border-top: 20px solid rgb(56, 107, 210);
   border-radius: 50%;
-  height: 10vw;
-  width: 10vw;
+  height: 15vmin;
+  width: 15vmin;
   text-align: center;
-  margin-top: 5vw;
+  margin: auto;
+  margin-top: 15vmin;
 }
