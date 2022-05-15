@@ -8,7 +8,7 @@ export default function Home() {
   async function getProject(evt) {
     evt.preventDefault();
 
-    const projectId = evt.target['project-id-input'].value;
+    const projectId = evt.target['project-id-input'].value.toLowerCase();
 
     navigate('/projects/' + projectId);
   };
