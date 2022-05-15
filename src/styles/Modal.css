@@ -1,4 +1,4 @@
-.modal-container {
+.privacy {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +23,7 @@
   width: fit-content;
   padding: 50px 100px;
   margin-bottom: 7vw;
+  overflow-y: scroll;
 }
 
 .modal button {

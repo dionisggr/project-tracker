@@ -6,7 +6,7 @@ export default function NavMobileIcon(props) {
   const className = (isNavOpen) ? 'close-icon' : 'hamburger';
 
   const closeIcon = (
-    <div className='close-icon'>X</div>
+    <div className='close-icon'>&times;</div>
   );
   const hamburgerIcon = (
     <div className='hamburger'>

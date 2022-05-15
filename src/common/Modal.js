@@ -8,12 +8,16 @@ export default function Modal(props) {
     show = false
   } = props;
 
+  const className = ['modal', props.className].join(' ').trim();
+
   if (!show) return null;
 
-  if (props.children) return props.children;
+  if (props.children) return (
+    <div className='modal'>{props.children}</div>
+  );
   
   return (
-    <div className='modal-container'>
+    <div className={className}>
       <div className='modal'>
         {title && <h3>{title}</h3>}
         <p>{message}</p>
