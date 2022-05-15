@@ -5,6 +5,7 @@ nav.mobile {
   right: 0;
   height: fit-content;
   background-color: rgba(9, 9, 9, 0.928);
+  background-color: rgba(59, 104, 193, 0.958);
   text-align: center;
   margin: auto;
   padding-top: 75px;
@@ -21,13 +22,13 @@ nav.mobile .links {
 }
 
 nav.mobile li {
-  border-bottom: solid 1px gray;
+  border-bottom: solid 1px rgb(176, 176, 176);
   border-radius: 10px;
 }
 
 nav.mobile li a {
   display: block;
-  padding: 35px 0;
+  padding: 25px 0;
   height: 100%;
   min-height: 100%;
 }
