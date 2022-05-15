@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import TextInput from 'common/TextInput';
-import 'styles/Home.css';
+import 'styles/Home.scss';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -26,6 +26,8 @@ export default function Home() {
         required
       />
 
+      <button type='submit' className='button'>Search</button>
+
       <p className='disclaimer'>
         If you don't have, or can't remember your Project ID,
         please reach out to one of the team members at
@@ -33,8 +35,6 @@ export default function Home() {
           tec3org@gmail.com
         </a>.
       </p>
-
-      <button type='submit' className='button'>Search</button>
     </form>
   );
 };

@@ -1,0 +1,33 @@
+nav.mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  background-color: rgba(9, 9, 9, 0.928);
+  text-align: center;
+  margin: auto;
+  padding-top: 75px;
+  padding-bottom: 2px;
+  z-index: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+nav.mobile .links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav.mobile li {
+  border-bottom: solid 1px gray;
+  border-radius: 10px;
+}
+
+nav.mobile li a {
+  display: block;
+  padding: 35px 0;
+  height: 100%;
+  min-height: 100%;
+}

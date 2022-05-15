@@ -47,7 +47,7 @@ export default function Projects() {
             const formattedDate = formatDate(new Date(project.dateRequested), 'MM/dd/yyyy');
 
             return (
-              <Link to={`/projects/${project.id}`} className='project' key={project.id}>
+              <Link to={`/projects/${project.id}`} className='project-summary' key={project.id}>
                 <Label value={project.client}>Client</Label>
                 <Label value={project.name}>Project</Label>
                 <Label value={project.phase}>Phase</Label>

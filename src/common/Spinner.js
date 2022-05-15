@@ -8,7 +8,7 @@ export default function Spinner() {
   useEffect(() => {
     const redirectTimeout = setTimeout(() => {
       toggleShow(false);
-    }, 8000);
+    }, 12000);
 
     return () => clearTimeout(redirectTimeout);
   }, []);

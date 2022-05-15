@@ -1,0 +1,33 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 65px;
+  text-align: center;
+
+  a {
+    margin-left: 5px;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+    color: white;
+  }
+  
+  .project-id-input input {
+    width: fit-content;
+    margin: 15px auto 50px auto;
+    line-height: 2em;
+    border: solid 1px rgba(128, 128, 128, 0.914);
+    border-radius: 5px;
+    text-indent: 5px;
+  }
+
+  .disclaimer {
+    position: absolute;
+    bottom: 2vw;
+    padding: 0 15px;
+    font-size: 14px;
+  }
+}

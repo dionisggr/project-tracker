@@ -1,8 +1,8 @@
-const date = new Date();
+const date = new Date('04/03/2022');
 
 const project = {
   id: 'demo',
-  name: 'Project Tracker Website',
+  name: 'Demo Project (Edits will not persist)',
   client: 'Tec3',
   contact: 'Dio',
   emailOrPhone: 'someawesome@email.com',

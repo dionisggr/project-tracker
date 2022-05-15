@@ -1,0 +1,35 @@
+nav.hamburger,
+nav.close-icon {
+  cursor: pointer;
+  z-index: 2;
+  width: 35px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+nav.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  height: 30px;
+}
+
+nav.hamburger .bar {
+  background: white;
+  border-radius: 5px;
+  height: 3px;
+  width: 28px;
+  margin: 2px;
+}
+
+nav.close-icon {
+  text-align: center;
+  font-weight: bolder;
+}
+
+@media only screen and (min-width: 850px) {
+  nav.hamburger {
+    display: none;
+  }
+}

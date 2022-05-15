@@ -1,7 +1,21 @@
-.projects .project {
+.projects h3 {
+  text-align: center;
+  margin: 2vw 15px;
+}
+
+.project-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 5px auto;
+  padding: 0;
+}
+
+.project-summary {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 15px;
   border: solid 1px rgb(56, 107, 210);
   background-color: rgba(128, 128, 128, 0.112);
@@ -11,16 +25,29 @@
   margin: 5px auto;
 }
 
-.projects h3 {
-  text-align: center;
-  margin: 2vw 15px;
-}
-
-.projects .project:hover {
+.project-summary:hover {
   background-color: rgba(56, 107, 210, 0.675);
   color: white;
 }
 
-.projects .project-list {
-  padding: 0;
+.project-summary .label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 850px) {
+  .project-list {
+    max-width: 100%;
+  }
+  
+  .project-summary {
+    flex-direction: row;
+  }
+
+  .project-summary .label {
+    flex-direction: row;
+  }
 }

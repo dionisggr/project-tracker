@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
+import NavDesktop from './Nav/NavDesktop';
+import NavMobile from './Nav/NavMobile';
 import 'styles/Header.css';
 
 export default function Header() {
@@ -9,7 +10,8 @@ export default function Header() {
         <h1>ProjectTracker</h1>
       </Link>
         
-      <Nav />
+      <NavDesktop />
+      <NavMobile />
     </header>
   );
 };
