@@ -7,7 +7,7 @@ export default function Privacy() {
   const [isPolicyOpen, togglePolicy] = useState(false);
 
   if (!isPolicyOpen) return (
-    <a href='/#' className='policy' onClick={togglePolicy}>
+    <a href='#!' className='policy' onClick={togglePolicy}>
       Privacy Policy
     </a>  
   );

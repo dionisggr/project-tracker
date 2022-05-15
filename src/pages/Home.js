@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <form className='home' onSubmit={getProject}>
-      <h3>Welcome to Tec<sup>3</sup>'s internal project management tool</h3>
+      <h2>Welcome to Tec<sup>3</sup>'s internal project management tool</h2>
 
       <label>Please provide a Project ID:</label>
 

@@ -1,4 +1,4 @@
-import Message from './Message';
+ import Message from './Message';
 import MessageInput from './MessageInput';
 import 'styles/Messages.css';
 

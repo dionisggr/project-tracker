@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <article className='contact'>
       <Form>
-        <h3>Contact Us!</h3>
+        <h2>Contact Us!</h2>
         <TextInput
           name='name'
           label='Name'

@@ -31,6 +31,7 @@ export default function MessageInput({ phase }) {
     <form className='message-input' onSubmit={sendMessage}>
       <div className='input-container'>
         <span className='icon'>{<Message />}</span>
+        <label className='input-label' htmlFor='message' />
         <input type='text' name='message' value={inputValue} onChange={handleInput} />
       </div>
       <button type='submit' className='button'>Send</button>

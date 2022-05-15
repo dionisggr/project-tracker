@@ -11,7 +11,7 @@ export default function AddProject() {
 
   return (
     <article className='add-project'>
-      <h3>Add a Project</h3>
+      <h2>Add a Project</h2>
 
       <label className='you-are-awesome'>...you awesome individual</label>
       

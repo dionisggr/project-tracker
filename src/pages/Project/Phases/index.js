@@ -56,6 +56,8 @@ export default function Phases({ currentPhase }) {
 
   return (
     <section className='phases'>
+      <label className='progress-title'>Progress:</label>
+      
       <ProgressBar progress={progress} />
       
       {

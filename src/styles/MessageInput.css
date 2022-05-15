@@ -30,6 +30,10 @@
   margin-right: 5px;
 }
 
+.message-input label {
+  display: none;
+}
+
 .message-input input {
   width: 100%;
   line-height: 2em;

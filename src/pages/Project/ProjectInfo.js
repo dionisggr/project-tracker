@@ -132,7 +132,6 @@ export default function ProjectInfo(props) {
   if (project.id && !isEditing) return (
     <section className='project-info'>
       <Label value={client}>Client</Label>
-      <Label value={name}>Project</Label>
       <Label value={labelFormattedDateRequested}>
         Date Requested
       </Label>

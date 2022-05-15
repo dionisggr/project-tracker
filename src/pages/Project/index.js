@@ -67,7 +67,7 @@ export default function Project() {
 
   return (
     <article className='project'>
-      <h3>Project</h3>
+      <h2>{project.name}</h2>
       
       <ProjectInfo project={project} setProject={setProject} />
 

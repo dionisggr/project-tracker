@@ -40,7 +40,7 @@ export default function Projects() {
 
   return (
     <article className='projects page'>
-      <h3>All Projects</h3>
+      <h2>All Projects</h2>
       <ul className='project-list'>
         {
           projects.map(project => {
