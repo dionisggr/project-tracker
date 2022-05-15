@@ -52,7 +52,7 @@ export default function Phases({ currentPhase }) {
     },
   ];
   const currentPhaseIndex = phases.map(({ name }) => name).indexOf(currentPhase);
-  const progress = `${currentPhaseIndex + 1}/${phases.length}`;
+  const progress = `${currentPhaseIndex}/${phases.length}`;
 
   return (
     <section className='phases'>

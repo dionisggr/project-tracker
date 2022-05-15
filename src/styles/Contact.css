@@ -1,8 +1,14 @@
 .contact {
-  /* width: 100%; */
-  /* position: absolute; */
   margin: auto;
   margin-top: 5vmin;
   padding: 0 15px;
   max-width: 650px;
+}
+
+.contact .text-area {
+  margin-bottom: 15px;
+}
+
+.contact button {
+  margin-top: 40px;
 }

@@ -1,10 +1,15 @@
 nav.hamburger,
 nav.close-icon {
   cursor: pointer;
-  z-index: 2;
+  z-index: 4;
   width: 35px;
   margin-right: 10px;
   text-align: center;
+}
+
+nav.close-icon {
+  text-align: center;
+  font-weight: bolder;
 }
 
 nav.hamburger {
@@ -21,11 +26,6 @@ nav.hamburger .bar {
   height: 3px;
   width: 28px;
   margin: 2px;
-}
-
-nav.close-icon {
-  text-align: center;
-  font-weight: bolder;
 }
 
 @media only screen and (min-width: 850px) {

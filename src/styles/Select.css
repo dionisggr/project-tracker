@@ -1,12 +1,11 @@
 .select {
+  text-align: left;
   width: 100%;
-  text-align: right;
-  margin: 5px 0;
 }
 
 .select label {
-  margin-right: 10px;
   font-weight: 600;
+  margin: 0;
 }
 
 .select select {

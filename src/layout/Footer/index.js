@@ -6,7 +6,7 @@ export default function Footer() {
       <span>© 2022 Tec<sup>3</sup>, LLC.</span>
       <span>All Rights Reserved.</span>
       <a href='/#' className='policy' data-toggle='modal' data-target='#privacy'>
-        Privacy policy
+        Privacy Policy
       </a>  
     </footer>
   );

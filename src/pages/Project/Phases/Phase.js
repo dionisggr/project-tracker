@@ -53,11 +53,12 @@ export default function Phase(props) {
       {
         (shouldOpen) &&
           <div className='phase-details'>
-            <label className='phase-details-label' htmlFor='phase-tasks'>Steps:</label>
-            <ul className='phase-tasks' >
-              {tasks.map(task => <li key={task}>{task}</li>)}
-            </ul>
-
+            <div className='steps-container'>
+              <label className='phase-details-label' htmlFor='phase-tasks'>Steps:</label>
+              <ul className='phase-tasks' >
+                {tasks.map(task => <li key={task}>{task}</li>)}
+              </ul>
+            </div>
             <Messages messages={filteredMessages} phase={phase} />
           </div>
       }

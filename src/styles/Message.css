@@ -1,4 +1,6 @@
 .message {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   text-align: right;
   margin: 5px 0;
@@ -7,13 +9,19 @@
   padding: 10px 15px;
 }
 
+.message .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: justify;
+}
+
 .message.admin {
   text-align: left;
   background-color: rgba(192, 213, 255, 0.593);
 }
 
 .message.client {
-  text-align: right;
   background-color: rgb(243, 224, 213);
 }
 
@@ -22,17 +30,18 @@
   font-weight: 700;
 }
 
-.message .date-time {
+.date-time {
   font-style: italic;
   transform: translate(0, 25%);
   color: rgb(85, 85, 85);
   font-size: 10px;
 }
 
-.message .date-time.admin {
+.date-time.admin {
   margin-left: 5px;
 }
 
-.message .date-time.client {
+.date-time.client {
+  text-align: right;
   margin-right: 5px;
 }

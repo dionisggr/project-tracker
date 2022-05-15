@@ -67,6 +67,8 @@ export default function Project() {
 
   return (
     <article className='project'>
+      <h3>Project</h3>
+      
       <ProjectInfo project={project} setProject={setProject} />
 
       <MessageContext.Provider value={{ addMessage, messages }}>

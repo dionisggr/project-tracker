@@ -1,3 +1,28 @@
 .project {
-  border: solid red;
+  text-align: center;
+  padding-bottom: 7.5vw;
+  margin: 5vmin auto 0 auto;
+  max-width: 700px;
+}
+
+.project .project-info {
+  margin-top: 3vw;
+}
+
+.project .label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.project .project-info button {
+  margin: 25px 5px 50px 5px;
+}
+
+@media only screen and (min-width: 675px) {
+  .project .label {
+    flex-direction: row;
+    justify-content: center;
+  }
 }

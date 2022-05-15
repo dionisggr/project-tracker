@@ -12,7 +12,9 @@ export default function AddProject() {
   return (
     <article className='add-project'>
       <h3>Add a Project</h3>
+
       <label className='you-are-awesome'>...you awesome individual</label>
+      
       <ProjectInfo project={project} setProject={setProject} />
     </article>
   );
