@@ -187,7 +187,7 @@ export default function ProjectInfo(props) {
         {emailOrPhone}
       </TextInput>
 
-      <button type='button' className='submit button' onClick={() => setEditStatus(false)} required >
+      <button type='button' className='cancel button' onClick={() => setEditStatus(false)} required >
         Cancel
       </button>
       <button type='button' className='submit button' onClick={handleSubmit} required >

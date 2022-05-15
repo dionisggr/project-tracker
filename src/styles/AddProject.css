@@ -1,8 +1,12 @@
 .add-project {
   text-align: center;
-  margin-top: 5vmin;
+  margin-top: 8vmin;
 }
 
 .add-project button {
   margin: 0;
+}
+
+.add-project button.cancel {
+  display: none;
 }
