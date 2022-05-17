@@ -360,11 +360,12 @@ Contact Us Page
 
 Add A Project
 :-------------------------:
-![Home Page](https://github.com/dionisggr/flickshare-client/blob/main/public/screenshots/home.png)
+![Add A Project](https://user-images.githubusercontent.com/20152090/168920788-a28e8d3a-3acc-4c1e-95b6-e72c14b882fd.png)
+
 
 All Projects
 :-------------------------:
-![User Lists](https://github.com/dionisggr/flickshare-client/blob/main/public/screenshots/user.png)
+![All Projects](https://user-images.githubusercontent.com/20152090/168920983-cf1bda1f-852b-4802-9162-dd5fcdece43e.png)
 
 ---
 
